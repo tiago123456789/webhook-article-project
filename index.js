@@ -1,8 +1,8 @@
 const express = require("express");
 const app = express();
 
-// Enable middleware parse data to json.
-app.use(express.json());
+// Enable middleware parse data to json
+app.use(express.json()); 
 
 app.post("/webhook", (request, response) => {
     console.log(request.body);
