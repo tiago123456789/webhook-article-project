@@ -9,9 +9,15 @@ app.post("/webhook", (request, response) => {
     const isRequestValid = request.query.token == token
     if (isRequestValid) {
         console.log(request.body);
-        return response.sendStatus(200);
+        return response.status(200).json({
+            "statusCode": 200,
+            "message": "Webhook is processed"
+        });
     }
-    response.sendStatus(401);
+    return response.status(401).json({
+        "statusCode": 401,
+        "message": "Webhook is not processed"
+    });
 });
 
 app.listen(3000, () => console.log(`Server is running in address: http://localhost:3000`));
